@@ -11,11 +11,11 @@ const Body = () => {
   const fetchData = async () => {
     try {
       const response = await fetch(
-        "https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.507241&lng=77.06404859999999&collection=83670&tags=layout_CCS_Rolls&sortBy=&filters=&type=rcv2&offset=0&page_type=null"
+        "https://thingproxy.freeboard.io/fetch/https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.507241&lng=77.06404859999999&collection=83670&tags=layout_CCS_Rolls&sortBy=&filters=&type=rcv2&offset=0&page_type=null"
       );
       const jsonData = await response.json();
       console.log("jsonData", jsonData);
-
+  
       const restaurants =
         jsonData?.data?.cards?.map((card) => card?.card?.card?.info) || [];
       const filteredRestaurants = restaurants.filter(
@@ -30,11 +30,11 @@ const Body = () => {
       // setListOfRestaurants([]);
     }
   };
-
+  
   useEffect(() => {
     fetchData();
   }, []);
-
+  
   return listOfRestaurants == 0 ? (
     <Shimmer />
   ) : (
